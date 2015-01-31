@@ -1,6 +1,11 @@
+cd Desktop/gitrepo/Ulti..
+
+
 1/ git add .
 2/ git commit -m "message"
 3/ git push origin master
+
+Maj:
 
 git fetch
 git rebase origin master
