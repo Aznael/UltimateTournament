@@ -17,7 +17,7 @@ public class Team {
 	//Methods
 	//
 	public void print_name(){
-		System.out.print(this.name+" / ");
+		System.out.print(this.name);
 	}
 
 	public String get_name(){

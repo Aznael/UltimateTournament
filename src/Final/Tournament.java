@@ -42,11 +42,16 @@ public class Tournament {
 		List<Team> list_team = new ArrayList<Team>();
 		for(Team a[]:last_round.get_list_tab_team()){
 			Scanner sc = new Scanner(System.in);
-			System.out.println("Team "+a[0].get_name()+" VS "+"Team "+a[1].get_name());
-			System.out.println("Who won ?");
-			String input = sc.nextLine();
-			if(last_round.get_team_by_name(input) != null){
-				list_team.add(last_round.get_team_by_name(input));
+			if(a.length == 2){
+				System.out.println("Team "+a[0].get_name()+" VS "+"Team "+a[1].get_name());
+				System.out.println("Who won ?");
+				String input = sc.nextLine();
+				if(last_round.get_team_by_name(input) != null){
+					list_team.add(last_round.get_team_by_name(input));
+				}
+			}
+			else{
+				
 			}
 		}
 		new_round = new Round(list_team);

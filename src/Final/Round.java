@@ -18,12 +18,49 @@ public class Round {
 	public Round(List<Team> list_team) {
 		this.list_tab_team = new ArrayList<Team[]>();
 		
-		//Final
+		//Winner
 		if (list_team.size() == 1){
 			Team tab[] = new Team[1];
 			tab[0] = list_team.get(0);
 			this.list_tab_team.add(tab);
 		}
+		//Multiple of 4 OR Final
+		else if (list_team.size() % 4 == 0 || list_team.size() == 2){
+			System.out.println("ok");
+			this.type = true;
+			for(int i=0;i<list_team.size();i++){
+				Team tab[] = new Team[2];
+				tab[0] = list_team.get(i);
+				tab[1] = list_team.get(i+1);
+				this.list_tab_team.add(tab);
+				i++;
+				System.out.println(i);
+			}
+		}
+		else{
+			this.type = false;
+			int reste = list_team.size() % 4;
+			int regular = list_team.size()-reste;
+			
+			for(int i=0;i<regular;i++){
+				Team tab[] = new Team[2];
+				tab[0] = list_team.get(i);
+				tab[1] = list_team.get(i+1);
+				this.list_tab_team.add(tab);
+				i++;
+			}
+			
+			for (int i = regular;i<list_team.size();i++){
+				Team tab[] = new Team[1];
+				tab[0] = list_team.get(i);
+				this.list_tab_team.add(tab);
+				i++;
+			}
+		}
+		
+		
+		
+		/*
 		//even team
 		else if (list_team.size() % 2 == 0){
 			this.type = true;
@@ -49,14 +86,24 @@ public class Round {
 			tab[0] = list_team.get(list_team.size()-1);
 			this.list_tab_team.add(tab);
 		}
-		
+		*/
 	}	
 	
 	public void print_round(){
 		for(Team a[]:this.list_tab_team){
-			for(int i=0; i<a.length;i++){
-				a[i].print_name();
+			System.out.print("[");
+			if(a.length == 1){
+				a[0].print_name();
 			}
+			else{
+				for(int i=0; i<a.length;i++){
+					if(i == a.length-1){
+						System.out.print(" / ");
+					}
+					a[i].print_name();
+				}
+			}
+			System.out.print("]");
 		}
 	}
 	
