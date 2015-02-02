@@ -7,12 +7,25 @@ import java.util.Scanner;
 
 
 public class Round {
+	//Attributs
+	//
 	private List <Team[]> list_tab_team;
 	// true even, false odd
 	private boolean type;
+	//
 	
+	
+	//Method
+	//
 	public List <Team[]> get_list_tab_team(){
 		return this.list_tab_team;
+	}
+	
+	public boolean get_type(){
+		return this.type;
+	}
+	public Round(){
+		
 	}
 	
 	public Round(List<Team> list_team) {
@@ -24,9 +37,8 @@ public class Round {
 			tab[0] = list_team.get(0);
 			this.list_tab_team.add(tab);
 		}
-		//Multiple of 4 OR Final
-		else if (list_team.size() % 4 == 0 || list_team.size() == 2){
-			System.out.println("ok");
+		//Even OR Final
+		else if (list_team.size() % 2 == 0 || list_team.size() == 2){
 			this.type = true;
 			for(int i=0;i<list_team.size();i++){
 				Team tab[] = new Team[2];
@@ -34,12 +46,12 @@ public class Round {
 				tab[1] = list_team.get(i+1);
 				this.list_tab_team.add(tab);
 				i++;
-				System.out.println(i);
 			}
 		}
+		//Odd
 		else{
 			this.type = false;
-			int reste = list_team.size() % 4;
+			int reste = list_team.size() % 2;
 			int regular = list_team.size()-reste;
 			
 			for(int i=0;i<regular;i++){
@@ -54,7 +66,6 @@ public class Round {
 				Team tab[] = new Team[1];
 				tab[0] = list_team.get(i);
 				this.list_tab_team.add(tab);
-				i++;
 			}
 		}
 		
@@ -158,5 +169,6 @@ public class Round {
 		
 		this.print_round();
 	}
+	//
 
 }

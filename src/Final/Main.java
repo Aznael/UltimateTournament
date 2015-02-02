@@ -14,7 +14,7 @@ public class Main {
 		String str = sc.nextLine();
 		int nbr_equipe = Integer.parseInt(str);
 		
-		List<Team> list_team = new ArrayList<Team>();
+		List<Team> list_team = new ArrayList<Team>(); 
 		for (int i=0; i<nbr_equipe; i++){
 			Team a = new Team(Integer.toString(i));
 			list_team.add(a);
