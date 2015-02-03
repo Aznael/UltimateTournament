@@ -129,6 +129,26 @@ public class Round {
 		return null;
 	}
 	
+	public Team[] get_penultieme_tab_team(){
+		Team[] tab_team = new Team[2];
+		int size = this.get_list_tab_team().size();
+		int i = 0;
+		for(Team[] a:this.get_list_tab_team()){
+			if (i == size - 2){
+				tab_team[0] = a[0];
+				tab_team[1] = a[1];
+			}
+			i++;
+		}
+		return tab_team;
+	}
+	
+	public void print_penultieme_team(){
+		for (Team a:this.get_penultieme_tab_team()){
+			a.print_name();
+		}
+	}
+	
 	public void change_name_team(){
 		Scanner sc = new Scanner(System.in);
 		String team_to_change;

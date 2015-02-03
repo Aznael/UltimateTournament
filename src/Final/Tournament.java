@@ -77,6 +77,7 @@ public class Tournament {
 				}
 			}
 			else{
+				System.out.println("Team "+a[0].get_name()+" passed the round due to odd number of team :");
 				list_team.add(a[0]);
 			}
 		}
@@ -88,13 +89,8 @@ public class Tournament {
 		Round new_round;
 		List<Team> list_team = new ArrayList<Team>();
 		Scanner sc = new Scanner(System.in);
-		int i = 0;
-		for(Team a[]:last_round.get_list_tab_team()){
-			i++;
-			if (i==1){
-				continue;
-			}
-			if(a.length == 2){
+		if (last_round.get_type() == true){
+			for(Team a[]:last_round.get_list_tab_team()){
 				System.out.println("Team "+a[0].get_name()+" VS "+"Team "+a[1].get_name());
 				System.out.println("Who won ?");
 				String input = sc.nextLine();
@@ -102,8 +98,29 @@ public class Tournament {
 					list_team.add(last_round.get_team_by_name(input));
 				}
 			}
-			else{
-				list_team.add(a[0]);
+		}
+		else {
+			int i = 0;
+			for(Team a[]:last_round.get_list_tab_team()){
+				if (i == last_round.get_list_tab_team().size()-2){
+					System.out.println("Only these team will fight due to odd number of team : ["+a[0].get_name()+" / "+a[1].get_name()+" ]");
+					System.out.println("Team "+a[0].get_name()+" VS "+"Team "+a[1].get_name());
+					System.out.println("Who won ?");
+					String input = sc.nextLine();
+					if(last_round.get_team_by_name(input) != null){
+						list_team.add(last_round.get_team_by_name(input));
+					}
+				}
+				else {
+					if(a.length == 2){
+						list_team.add(last_round.get_team_by_name(a[0].get_name()));
+						list_team.add(last_round.get_team_by_name(a[1].get_name()));
+					}
+					else{
+						list_team.add(last_round.get_team_by_name(a[0].get_name()));
+					}
+				}
+				i++;
 			}
 		}
 		new_round = new Round(list_team);
