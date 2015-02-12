@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import com.ManagerTournament.controller.Groupe_Poule;
 import com.ManagerTournament.models.Poule;
 import com.ManagerTournament.models.Team;
 
@@ -43,7 +44,7 @@ public class View_console extends View{
 	public void display_list(List<Team> list_team){
 		System.out.println("Ensemble des equipes :");
 		for (int i = 0; i < list_team.size(); i++) {
-			System.out.println("- equipe " + list_team.get(i).getName());
+			System.out.println("- equipe"+i+"  : " + list_team.get(i).getName());
 		}
 	}
 	public void close_scanner(){
@@ -64,7 +65,7 @@ public class View_console extends View{
 	}
 	public void display_case_1(){
 		System.out.println("Modification des informations d'une team");
-		System.out.println("Choix de la team à modif, les afficher ?(y/n)");
+		
 	}
 	public void display_case_2(){
 		System.out.println("Beginning of the tournament");
@@ -102,10 +103,29 @@ public class View_console extends View{
 		System.out.println("Entrez le score de la team "+ team +" : ");
 		return sc.nextInt();
 	}
-	public String choice_team_modification(){
-		ret
+	public Team choice_team_modification(Groupe_Poule gp){
+		int input;
+		do{
+		System.out.println("Quelle équipe voulez-vous changer ? \n");
+		this.display_list(gp.getList_team());
+		
+		input = sc.nextInt();
+		
+		}while(input <0 || input > gp.getList_team().size());
+		System.out.println("Vous avez choisi la team :  "+gp.getList_team().get(input).getName() );
+		return gp.getList_team().get(input);
 	}
-	
+	//putain je fais ca comment !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	public void clear_scanner(){
+		sc.nextLine();
+	}
+	public void display_score(String team1, String team2, int score1, int score2){
+		System.out.println(" equipe"+team1+" : "+ score1+ " | "+ score2+" : equipe  "+ team2 );
+	}
+	public void display_all_winners(List<Team> winners){
+		System.out.println("Les vainqueurs des poules sont :  ");
+		this.display_list(winners);
+	}
 }
 
 

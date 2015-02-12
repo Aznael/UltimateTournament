@@ -17,7 +17,7 @@ public class Main {
 		int nbr_equipe = view.select_teams_number_pool();
 		gp.create_teams_list(nbr_equipe);
 		view.display_list(gp.getList_team());
-	
+		
 		String input = "";
 		while(input != "0"){
 			
@@ -34,10 +34,7 @@ public class Main {
 				case "1":
 					view.display_case_1();
 					
-					String input2 = sc.nextLine();
-					if (input2 == "y"){
-						view.display_list(gp.getList_team());
-					}
+					view.choice_team_modification(gp);
 					/*
 					System.out.println("Entrez le nom");
 					
@@ -68,7 +65,10 @@ public class Main {
 					view.display_all_pool(gp.getPouletab());
 					for(int i = 0 ; i < gp.getPouletab().size(); i++){
 						gp.deroulement_round(gp.getPouletab().get(i));
+						
 					}
+					gp.last_setting_winners();
+					view.display_all_winners(gp.getCadeau_roman_lovelove());
 					break;
 				default:
 					view.display_case_default();

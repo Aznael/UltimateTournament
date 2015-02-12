@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+
 import com.ManagerTournament.models.Poule;
 import com.ManagerTournament.models.Team;
 import com.ManagerTournament.view.View;
@@ -26,12 +27,15 @@ public class Groupe_Poule {
 	private List<Poule> Pouletab;
 	private List<Team> list_team;
 	private View view_type;
+	private List<Team> cadeau_roman_lovelove;
+	
 	//
 	// constructors
 	//
 	public Groupe_Poule(View view) {
 		Pouletab = new ArrayList<>();
 		list_team = new ArrayList<>();
+		cadeau_roman_lovelove= new ArrayList<>();
 		this.view_type=view;
 		
 	}
@@ -169,9 +173,10 @@ public class Groupe_Poule {
 				//
 				// affichage score
 				//
-				System.out.println(teamtab.get(parcours1).getName()+" : "+ score1+ " | "+ score2+" : "+ teamtab.get(parcours2).getName() );
-				teamtab.get(parcours1).set_win_lose_goalaverage(teamtab.get(parcours2), score1, score2);
+				view_type.display_score(teamtab.get(parcours1).getName(), teamtab.get(parcours2).getName(), score1, score2);
+				
 				//
+				teamtab.get(parcours1).set_win_lose_goalaverage(teamtab.get(parcours2), score1, score2);
 				parcours2++;
 			}	
 			
@@ -182,5 +187,21 @@ public class Groupe_Poule {
 		view_type.display_winners(poule_selec);
 		
 	}
+
+	public List<Team> getCadeau_roman_lovelove() {
+		return cadeau_roman_lovelove;
+	}
+
+	public void setCadeau_roman_lovelove(List<Team> cadeau_roman_lovelove) {
+		this.cadeau_roman_lovelove.addAll(cadeau_roman_lovelove);
+	}
+	
+	public void last_setting_winners(){
+		for(int i = 0; i< Pouletab.size(); i++){
+			this.setCadeau_roman_lovelove(Pouletab.get(i).getWinners());
+		}
+	}
+	
+	
 
 }
