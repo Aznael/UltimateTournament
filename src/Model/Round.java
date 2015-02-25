@@ -1,13 +1,16 @@
-package Final;
+package Model;
 
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import View.View;
+import View.View_console;
+
 
 public class Round {
-	//Attributs
+	//Attributes
 	//
 	private List <Team[]> list_tab_team;
 	// true even, false odd
@@ -100,24 +103,6 @@ public class Round {
 		*/
 	}	
 	
-	public void print_round(){
-		for(Team a[]:this.list_tab_team){
-			System.out.print("[");
-			if(a.length == 1){
-				a[0].print_name();
-			}
-			else{
-				for(int i=0; i<a.length;i++){
-					if(i == a.length-1){
-						System.out.print(" / ");
-					}
-					a[i].print_name();
-				}
-			}
-			System.out.print("]");
-		}
-	}
-	
 	public Team get_team_by_name(String name_team){
 		for(Team a[]:this.list_tab_team){
 			for(Team b:a){
@@ -152,10 +137,8 @@ public class Round {
 	public void change_name_team(){
 		Scanner sc = new Scanner(System.in);
 		String team_to_change;
-		
+		View consoleview = new View_console();
 		System.out.println("You will change the name of a team");
-		this.print_round();
-		
 		
 		while(true) {
 			System.out.println("Which team do you want to change ?");
@@ -187,7 +170,7 @@ public class Round {
 		}while(flag == 0);
 		
 		
-		this.print_round();
+		consoleview.print_round(this);
 	}
 	//
 

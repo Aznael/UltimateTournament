@@ -1,8 +1,11 @@
-package Final;
+package Model;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+
+import View.View;
+import View.View_console;
 
 public class Tournament {
 	private List<Round> list_round;
@@ -20,37 +23,18 @@ public class Tournament {
 		return last_round;
 	}
 	
-	/*
 	public boolean start(){
-		Round new_round;
-		Round last_round = this.get_last_round();
-		new_round = this.even_round(last_round);
-		this.add_round(new_round);
-		new_round.print_round();
-		
-		if(new_round.get_list_tab_team().size()==1){
-			for(Team a[]: new_round.get_list_tab_team()){
-				if(a.length == 1){
-					return true;
-				}
-			}
-			return false;
-		}else return false;
-	} 
-	*/
-	
-	
-	public boolean start(){
+		View consoleview = new View_console();
 		Round new_round = new Round();
 		Round last_round = this.get_last_round();
 		if (last_round.get_list_tab_team().size() % 2 == 0){
 			new_round = this.even_round(last_round);
 		}
-		else if (last_round.get_list_tab_team().size() != 1){
+		else{
 			new_round = this.odd_round(last_round);
 		}
 		this.add_round(new_round);
-		new_round.print_round();
+		consoleview.print_round(new_round);
 		
 		if(new_round.get_list_tab_team().size()==1){
 			for(Team a[]: new_round.get_list_tab_team()){
@@ -59,7 +43,9 @@ public class Tournament {
 				}
 			}
 			return false;
-		}else return false;
+		}else{
+			return false;
+		}
 	} 
 	
 	
