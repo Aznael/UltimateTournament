@@ -1,4 +1,4 @@
-package Final;
+package Model;
 
 public class Player {
 	
